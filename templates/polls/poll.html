@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Poll</title>
+</head>
+<body>
+    <main>
+        <h1>{{ poll.text }}</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {% for choice in choices %}
+                <input type="radio" name="choice" value="{{ choice.id }}">{{ choice.text }}<br />
+            {% endfor %}
+
+            {% if old_votes|length != 0 %}
+                <a style="color: orange">You have already voted for the option "{{ old_votes.0.choice.text }}", if you will vote again, your old vote will be retracted</a><br />
+            {% endif %}
+
+            <a style="color: red;">{{ error }}</a><br />
+
+            <button type="submit">Vote</button>
+        </form>
+
+        <br />
+        <a href="/polls">All Polls</a>
+    </main>
+</body>
+</html>

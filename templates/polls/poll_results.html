@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Poll Results</title>
+</head>
+<body>
+    <main>
+        <h1>{{ poll.text }}</h1>
+
+        {% for choice_votes in choices_votes %}
+            <h2>{{ choice_votes.choice.text }}</h2>
+
+            {% if choice_votes.votes|length == 0 %}
+                No votes
+            {% else %}
+                Votes:
+                <ul>
+                    {% for vote in choice_votes.votes %}
+                        <li>{{ vote.user }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+
+        <br />
+        <br />
+        <a href="/polls">All Polls</a>
+    </main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Poll</title>
+</head>
+<body>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+
+            Question:<input type="text" name="question" id="question" /><br />
+
+            Choices:<br />
+            <input type="text" name="choice" /><br />
+            <input type="text" name="choice" /><br />
+            <input type="text" name="choice" /><br />
+
+            <a style="color: red;">{{ error }}</a><br />
+
+            <button type="submit">Create</button>
+        </form>
+
+        <br />
+        <a href="/polls">All Polls</a>
+    </main>
+</body>
+</html>
